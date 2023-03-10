@@ -1,6 +1,8 @@
 from flask import Flask, request, redirect, render_template, jsonify, make_response
 import os
 import random
+import docker
+import datetime
 
 app = Flask(__name__)
 
@@ -8,6 +10,24 @@ try:
     FLAG = open('./prob/flag.txt', 'r').read()
 except:
     FLAG = 'ㅍㅡㄹㄹㅐㄱㅡzz'
+
+def remove_old_containers(age_limit_hours):
+    client = docker.from_env()
+
+    age_limit = datetime.timedelta(hours=age_limit_hours)
+    age_limit_seconds = age_limit.total_seconds()
+
+    containers = client.containers.list(all=True)
+
+    for container in containers:
+        start_time_str = container.attrs['Created']
+        start_time = datetime.datetime.strptime(start_time_str, '%Y-%m-%dT%H:%M:%S.%fZ')
+
+        age = (datetime.datetime.utcnow() - start_time).total_seconds()
+
+        if age > age_limit_seconds:
+            container.stop()
+            container.remove()
 
 @app.route("/", methods=["GET","POST"])
 def index():
