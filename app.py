@@ -35,7 +35,7 @@ def portf():
 @app.route("/prob")
 def prob():
     port = random.randint(49152,65535)
-    os.popen(f"docker run --rm -p {port}:80 wargame")
+    os.popen(f"docker run --rm -p {port}:80 shock")
     return render_template("index.html", link="http://localhost:" + str(port))
 
 if __name__ == "__main__":
