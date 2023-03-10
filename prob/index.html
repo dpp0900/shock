@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>server status</title>
+        <meta charset="utf-8">
+        <style>
+            body{
+                font-family: Raleway, RalewayOffline, sans-serif;
+                font-size: 1.5em;
+            }
+            a:not(.nocss){
+                text-decoration: none;
+                color: white;
+            }
+            .navbar {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                background: gray;
+                width: auto;
+            }
+
+            .navbar__menu {
+                display: flex;
+                list-style: none;
+                padding-left: 0px;
+                border: 1;
+            }
+            .navbar__menu li {
+                padding: 5px;
+            }
+            .blur{
+                filter: blur(10px);
+            }
+
+        </style>
+    </head>
+    <body>
+        <nav class="navbar">
+            <ul class="navbar__menu">
+                <li><a href="">Home</a></li>
+                <li><a href="cgi-bin/status.cgi">Check Server</a></li>
+            </ul>
+        </nav>
+        <p>
+        To check the portfolio, please click the Answer button outside the problem :) Please solve the problem if possible!! The definitive hint is <span class="blur">CVE-2014-6271</span>
+        </p>
+        <a class="nocss" href="cgi-bin/status.cgi">Check Server</a>
+    </body>
+</html>
