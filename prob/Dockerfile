@@ -29,8 +29,6 @@ COPY ./flag.txt /
 
 RUN chmod 777 /flag.txt
 
-RUN cd /tmp/psutil-1.0.1 && \
-    python setup.py install
 RUN chmod 755 /usr/lib/cgi-bin/status.cgi
 
 EXPOSE 80
