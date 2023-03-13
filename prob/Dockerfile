@@ -32,4 +32,4 @@ RUN chmod 777 /flag.txt
 RUN chmod 755 /usr/lib/cgi-bin/status.cgi
 
 EXPOSE 80
-ENTRYPOINT ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
+ENTRYPOINT ["/usr/sbin/apache2ctl"]
