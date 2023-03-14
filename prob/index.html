@@ -1,49 +1,104 @@
 <html>
     <head>
-        <title>server status</title>
         <meta charset="utf-8">
         <style>
             body{
                 font-family: Raleway, RalewayOffline, sans-serif;
                 font-size: 1.5em;
+                text-align: center;
+            }
+            .prob{
+                background-color: gray;
+                text-align: center;
+                width: 20%;
+                margin-left: 40%;
+                margin-top: 2em;
+                padding-top: 0.01rem;
+                padding-bottom: 0.01rem;
+                border-color: black;
+                border-style: solid;
+                border-width: 1px;
+                border-radius: 5px;
+            }
+            .flag,.portf{
+                margin-top: 0.5rem;
             }
             a:not(.nocss){
+                font-size: 0.5em;
+                border-color: black;
+                border-style: solid;
+                border-width: 1px;
+                border-radius: 25px;
+                background-color: gray;
+                color: black;
                 text-decoration: none;
-                color: white;
+                display: inline-block;
+                width: 60px;
             }
-            .navbar {
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-                background: gray;
-                width: auto;
+            h2{
+                
+                font-size: 1.5em; 
+                font-weight: 500;
+                margin-bottom: 0.5em;
             }
-
-            .navbar__menu {
-                display: flex;
-                list-style: none;
-                padding-left: 0px;
-                border: 1;
+            input{
+                width: 150px;
+                height: 2em;
+                font-size: 0.7em;
+                border-color: black;
+                border-style: solid;
+                border-width: 1px;
+                border-radius: 25px;
+                text-align: center;
+                position: static;
+                background-color: white;
+                color: gray;
             }
-            .navbar__menu li {
-                padding: 5px;
+            button{
+                height: 2em;
+                font-size: 0.7em;
+                border-color: black;
+                border-style: solid;
+                border-width: 1px;
+                border-radius: 25px;
+            }
+            p{
+                margin-top: 8;
+                margin-bottom: 0;
             }
             .blur{
-                filter: blur(10px);
+                text-shadow: 0px 0px 7px black;
+                color: transparent;
             }
-
         </style>
+        <script>
+            window.onload = function() {
+                setTimeout(function() {
+                    const aTag = document.getElementById("pblink");
+                    aTag.setAttribute("href", "{{ link }}");
+                    aTag.innerHTML = "{{ link }}";
+                }, 2000);
+            };
+        </script>
     </head>
     <body>
-        <nav class="navbar">
-            <ul class="navbar__menu">
-                <li><a href="">Home</a></li>
-                <li><a href="cgi-bin/status.cgi">Check Server</a></li>
-            </ul>
-        </nav>
-        <p>
-        To check the portfolio, please click the Answer button outside the problem :) Please solve the problem if possible!! The definitive hint is <span class="blur">CVE-2014-6271</span>
-        </p>
-        <a class="nocss" href="cgi-bin/status.cgi">Check Server</a>
+        <div class="prob">
+            <h2>Shock</h2>
+            <a href="prob">here</a>
+            {% if link %}
+            <p id="link">
+                <a class="nocss" id="pblink" href="" style="margin-top: 5px; font-size: 0.5em; background-color: gray; color: black; text-decoration: none;">wait...</a>
+            </p>
+            {% endif %}
+            <div class="portf">
+                <a href="portf">answer</a>
+            </div>
+            <div class="flag">
+                <form action="/" method="post">
+                    <input type="text" name="flag" id="flag">
+                    <button type="submit">제출</button>
+                </form>
+            </div>
+        </div>
     </body>
 </html>

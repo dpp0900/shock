@@ -12,7 +12,7 @@ try:
 except:
     FLAG = 'ㅍㅡㄹㄹㅐㄱㅡzz'
 
-def refresh_docker(deadtime):
+'''def refresh_docker(deadtime):
     client = docker.from_env()
     deadtime_delta = datetime.timedelta(hours=deadtime)
     deadtime_delta_seconds = deadtime_delta.total_seconds()
@@ -24,7 +24,7 @@ def refresh_docker(deadtime):
             livetime = (datetime.datetime.utcnow() - start_time).total_seconds()
             if livetime > deadtime_delta_seconds:
                 container.stop()
-                container.remove()
+                container.remove()'''
 
 @app.route("/", methods=["GET","POST"])
 def index():
@@ -53,7 +53,6 @@ def portf():
 def prob():
     port = random.randint(49152,65535)
     os.popen(f"docker run --rm -p {port}:80 shock")
-    time.sleep(2)
     return render_template("index.html", link="http://www.dpp0900.com:" + str(port))
 
 if __name__ == "__main__":
